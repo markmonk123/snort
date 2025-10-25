@@ -14,3 +14,4 @@ dist/
 .pnp*
 docs/
 .wrangler/
+.env
