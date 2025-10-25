@@ -52,6 +52,24 @@ Snort supports the following NIP's:
 
 ### Running
 
+#### Development with Docker Compose (Recommended)
+
+For the easiest development experience with hot-reloading and auto-deployment:
+
+```bash
+# Quick start with the startup script
+./dev-start.sh
+
+# Or use Docker Compose directly
+docker compose -f compose.dev.yml up -d
+```
+
+The application will be available at http://localhost:5173 with automatic hot-reloading.
+
+For detailed setup instructions, see [DEV-SETUP.md](DEV-SETUP.md).
+
+#### Local Development (Without Docker)
+
 This repository is a yarn workspace. To install dependencies, run `yarn` from the project root.
 
 To run the application, use

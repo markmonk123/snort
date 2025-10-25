@@ -1,0 +1,26 @@
+services:
+  snort-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    container_name: snort-dev
+    ports:
+      - "5173:5173"
+    volumes:
+      # Mount source code for hot-reloading
+      - .:/workspace
+      # Use named volumes for node_modules to avoid conflicts
+      - node_modules:/workspace/node_modules
+      - yarn_cache:/workspace/.yarn/cache
+    environment:
+      - NODE_ENV=development
+      - CHOKIDAR_USEPOLLING=true
+    restart: unless-stopped
+    stdin_open: true
+    tty: true
+    working_dir: /workspace
+    command: sh -c "yarn install && cd packages/app && yarn start --host 0.0.0.0 --port 5173"
+
+volumes:
+  node_modules:
+  yarn_cache:
